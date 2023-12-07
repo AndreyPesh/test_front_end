@@ -1,4 +1,5 @@
 import AddNote from '../2_widgets/AddNote';
+import ListNote from '../2_widgets/ListNote';
 import './styles/index.css';
 import { Layout, Space } from 'antd';
 
@@ -28,7 +29,9 @@ function App() {
         <Header style={headerStyle}>
           <AddNote />
         </Header>
-        <Content style={contentStyle}>Content</Content>
+        <Content style={contentStyle}>
+          <ListNote />
+        </Content>
       </Layout>
     </Space>
   );
