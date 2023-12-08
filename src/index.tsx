@@ -2,6 +2,7 @@ import React from 'react';
 import ReactDOM from 'react-dom/client';
 import { Provider } from 'react-redux';
 import App from './1_app/App';
+import LayoutLocalStorage from './1_app/LayoutLocalStorage';
 import { store } from './4_shared/store/store';
 
 const root = ReactDOM.createRoot(
@@ -10,7 +11,9 @@ const root = ReactDOM.createRoot(
 root.render(
   <React.StrictMode>
     <Provider store={store}>
-      <App />
+      <LayoutLocalStorage>
+        <App />
+      </LayoutLocalStorage>
     </Provider>
   </React.StrictMode>
 );
