@@ -6,21 +6,22 @@ import {
   useAppSelector,
 } from '../../../4_shared/store/hooks/manageStore';
 import { closeModal } from '../../../4_shared/store/slices/editNoteModalSlice';
+import { editNote } from '../../../4_shared/store/slices/noteSlice';
 
 const EditModal = () => {
   const { isModalOpen, currentNote } = useAppSelector(
     (state) => state.editModal
   );
   const dispatch = useAppDispatch();
-  const ref = useRef<TextAreaRef>(null);
+  const refEditableNote = useRef<TextAreaRef>(null);
 
   const handleOk = () => {
-    const editedNote = ref.current?.resizableTextArea?.textArea.value;
-    if (editedNote && editedNote !== currentNote.content) {
-      alert('changed')
+    const editedNoteText =
+      refEditableNote.current?.resizableTextArea?.textArea.value;
+    if (editedNoteText && editedNoteText !== currentNote.content) {
+      dispatch(editNote({ id: currentNote.id, content: editedNoteText }));
     }
     dispatch(closeModal());
-    console.log(ref.current?.resizableTextArea?.textArea.value);
   };
 
   const handleCancel = () => {
@@ -47,7 +48,7 @@ const EditModal = () => {
         ]}
       >
         <Form.Item name="currentNote">
-          <Input.TextArea ref={ref} />
+          <Input.TextArea ref={refEditableNote} />
         </Form.Item>
       </Form>
     </Modal>
