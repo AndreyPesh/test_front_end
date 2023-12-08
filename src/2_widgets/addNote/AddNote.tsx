@@ -2,7 +2,7 @@ import { Button, Form, Input } from 'antd';
 import { v4 as uuidv4 } from 'uuid';
 import { FieldType } from './types/type';
 import { useAppDispatch } from '../../4_shared/store/hooks/manageStore';
-import { addNote } from '../listNote/store/noteSlice';
+import { addNote } from '../../4_shared/store/slices/noteSlice';
 
 const AddNote = () => {
   const [form] = Form.useForm();

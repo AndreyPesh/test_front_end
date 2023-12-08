@@ -1,6 +1,6 @@
 import { FC } from 'react';
 import { List } from 'antd';
-import { Note } from './types/interfaces';
+import { Note } from '../../4_shared/types/interfaces';
 import DeleteNoteButton from './ui/DeleteNoteButton';
 
 interface NoteProps {
