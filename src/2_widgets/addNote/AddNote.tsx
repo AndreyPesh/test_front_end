@@ -1,16 +1,21 @@
 import { Button, Form, Input } from 'antd';
+import { v4 as uuidv4 } from 'uuid';
+import { FieldType } from './types/type';
+import { useAppDispatch } from '../../4_shared/store/hooks/manageStore';
+import { addNote } from '../listNote/store/noteSlice';
 
 const AddNote = () => {
-  const onFinish = (values: any) => {
-    console.log('Success:', values);
+  const [form] = Form.useForm();
+  const dispatch = useAppDispatch();
+
+  const onFinish = ({ content }: FieldType) => {
+    const newNote = { id: uuidv4(), content };
+    dispatch(addNote(newNote));
+    form.resetFields();
   };
 
   const onFinishFailed = (errorInfo: any) => {
     console.log('Failed:', errorInfo);
-  };
-
-  type FieldType = {
-    note?: string;
   };
 
   return (
@@ -24,12 +29,13 @@ const AddNote = () => {
         justifyContent: 'center',
         alignItems: 'baseline',
       }}
+      form={form}
       onFinish={onFinish}
       onFinishFailed={onFinishFailed}
       autoComplete="off"
     >
       <Form.Item<FieldType>
-        name="note"
+        name="content"
         style={{ width: '50%' }}
         rules={[{ required: true, message: 'Please input your note!' }]}
       >
