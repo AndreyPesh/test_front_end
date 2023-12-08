@@ -1,6 +1,7 @@
 import { FC } from 'react';
 import { List } from 'antd';
 import { Note } from './types/interfaces';
+import DeleteNoteButton from './ui/DeleteNoteButton';
 
 interface NoteProps {
   note: Note;
@@ -13,9 +14,7 @@ const NoteItem: FC<NoteProps> = ({ note }) => {
         <a href="/" key="list-edit">
           edit
         </a>,
-        <a href="/" key="list-more">
-          remove
-        </a>,
+        <DeleteNoteButton note={note} />,
       ]}
     >
       <List.Item.Meta
