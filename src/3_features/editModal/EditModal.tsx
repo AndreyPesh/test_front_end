@@ -4,9 +4,9 @@ import { TextAreaRef } from 'antd/es/input/TextArea';
 import {
   useAppDispatch,
   useAppSelector,
-} from '../../../4_shared/store/hooks/manageStore';
-import { closeModal } from '../../../4_shared/store/slices/editNoteModalSlice';
-import { editNote } from '../../../4_shared/store/slices/noteSlice';
+} from '../../4_shared/store/hooks/manageStore';
+import { closeModal } from '../../4_shared/store/slices/editNoteModalSlice';
+import { editNote } from '../../4_shared/store/slices/noteSlice';
 
 const EditModal = () => {
   const { isModalOpen, currentNote } = useAppSelector(
@@ -20,6 +20,9 @@ const EditModal = () => {
       refEditableNote.current?.resizableTextArea?.textArea.value;
     if (editedNoteText && editedNoteText !== currentNote.content) {
       dispatch(editNote({ id: currentNote.id, content: editedNoteText }));
+    }
+    if (!editedNoteText) {
+      return;
     }
     dispatch(closeModal());
   };

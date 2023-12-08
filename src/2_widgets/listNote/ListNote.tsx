@@ -1,7 +1,7 @@
 import { List } from 'antd';
 import NoteItem from '../note/Note';
 import { useAppSelector } from '../../4_shared/store/hooks/manageStore';
-import EditModal from '../note/ui/EditModal';
+import EditModal from '../../3_features/editModal/EditModal';
 
 const ListNote = () => {
   const listNote = useAppSelector((state) => state.notes);
@@ -14,10 +14,8 @@ const ListNote = () => {
           background: '#fff',
           fontSize: '20px',
         }}
-        // loading={initLoading}
         header="List notes"
         itemLayout="horizontal"
-        // loadMore={loadMore}
         dataSource={listNote}
         bordered
         renderItem={(item) => <NoteItem note={item} />}
