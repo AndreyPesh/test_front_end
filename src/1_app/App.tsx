@@ -1,7 +1,7 @@
+import { Layout, Space } from 'antd';
+import './styles/index.css';
 import AddNote from '../2_widgets/AddNote';
 import ListNote from '../2_widgets/ListNote';
-import './styles/index.css';
-import { Layout, Space } from 'antd';
 
 const { Header, Content } = Layout;
 
