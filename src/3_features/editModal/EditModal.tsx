@@ -1,30 +1,30 @@
-import { useRef } from 'react';
-import { Form, Input, Modal } from 'antd';
-import { TextAreaRef } from 'antd/es/input/TextArea';
+import { Form, Modal } from 'antd';
 import {
   useAppDispatch,
   useAppSelector,
 } from '../../4_shared/store/hooks/manageStore';
 import { closeModal } from '../../4_shared/store/slices/editNoteModalSlice';
 import { editNote } from '../../4_shared/store/slices/noteSlice';
+import HighlightTextArea from '../HighlightTextArea/HighlightTextArea';
 
 const EditModal = () => {
   const { isModalOpen, currentNote } = useAppSelector(
     (state) => state.editModal
   );
   const dispatch = useAppDispatch();
-  const refEditableNote = useRef<TextAreaRef>(null);
+  // const refEditableNote = useRef<Editor>(null);
 
   const handleOk = () => {
-    const editedNoteText =
-      refEditableNote.current?.resizableTextArea?.textArea.value;
-    if (editedNoteText && editedNoteText !== currentNote.content) {
-      dispatch(editNote({ id: currentNote.id, content: editedNoteText }));
-    }
-    if (!editedNoteText) {
-      return;
-    }
-    dispatch(closeModal());
+    // console.log(refEditableNote.current);
+    // const editedNoteText =
+    //   refEditableNote.current?.resizableTextArea?.textArea.value;
+    // if (editedNoteText && editedNoteText !== currentNote.content) {
+    //   dispatch(editNote({ id: currentNote.id, content: editedNoteText }));
+    // }
+    // if (!editedNoteText) {
+    //   return;
+    // }
+    // dispatch(closeModal());
   };
 
   const handleCancel = () => {
@@ -41,7 +41,7 @@ const EditModal = () => {
       okButtonProps={{ style: { background: '#0b830b' } }}
     >
       <Form
-        wrapperCol={{ span: 20, offset: 2 }}
+        wrapperCol={{ span: 24 }}
         name="edit-note"
         fields={[
           {
@@ -51,7 +51,8 @@ const EditModal = () => {
         ]}
       >
         <Form.Item name="currentNote">
-          <Input.TextArea ref={refEditableNote} />
+          {/* <Input.TextArea ref={refEditableNote} /> */}
+          <HighlightTextArea initValue={currentNote.content} />
         </Form.Item>
       </Form>
     </Modal>

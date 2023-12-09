@@ -2,7 +2,6 @@ import { Layout, Space } from 'antd';
 import './styles/index.css';
 import AddNote from '../2_widgets/addNote/AddNote';
 import ListNote from '../2_widgets/listNote/ListNote';
-import TextArea from '../test/TextArea';
 
 const { Header, Content } = Layout;
 
@@ -32,7 +31,6 @@ function App() {
         </Header>
         <Content style={contentStyle}>
           <ListNote />
-          <TextArea />
         </Content>
       </Layout>
     </Space>
