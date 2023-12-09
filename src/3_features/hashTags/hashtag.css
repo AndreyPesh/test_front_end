@@ -1,3 +1,13 @@
+.hashtag_list {
+  margin-top: 5px;
+  display: flex;
+  flex-wrap: wrap;
+  max-height: 50px;
+  line-height: 15px;
+  overflow-y: auto;
+  overflow-x: hidden;
+}
+
 .tag {
   padding-right: 5px;
   color: blue;
