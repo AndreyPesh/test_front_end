@@ -15,7 +15,7 @@ const HighlightTextArea = ({ initValue }: { initValue: string }) => {
 
   useEffect(() => {
     dispatch(setValueTextAreaEditNote({ value: initValue }));
-  }, [initValue]);
+  }, [initValue, dispatch]);
 
   const onChangeHandler = (value: string) => {
     dispatch(setValueTextAreaEditNote({ value }));

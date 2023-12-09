@@ -11,20 +11,17 @@ const EditModal = () => {
   const { isModalOpen, currentNote } = useAppSelector(
     (state) => state.editModal
   );
+  const { value } = useAppSelector((state) => state.textArea);
   const dispatch = useAppDispatch();
-  // const refEditableNote = useRef<Editor>(null);
 
   const handleOk = () => {
-    // console.log(refEditableNote.current);
-    // const editedNoteText =
-    //   refEditableNote.current?.resizableTextArea?.textArea.value;
-    // if (editedNoteText && editedNoteText !== currentNote.content) {
-    //   dispatch(editNote({ id: currentNote.id, content: editedNoteText }));
-    // }
-    // if (!editedNoteText) {
-    //   return;
-    // }
-    // dispatch(closeModal());
+    if (value && value !== currentNote.content) {
+      dispatch(editNote({ id: currentNote.id, content: value }));
+    }
+    if (!value) {
+      return;
+    }
+    dispatch(closeModal());
   };
 
   const handleCancel = () => {
@@ -51,7 +48,6 @@ const EditModal = () => {
         ]}
       >
         <Form.Item name="currentNote">
-          {/* <Input.TextArea ref={refEditableNote} /> */}
           <HighlightTextArea initValue={currentNote.content} />
         </Form.Item>
       </Form>
