@@ -8,7 +8,7 @@ interface StateEditNoteModal {
 
 const initStateEditNoteModal: StateEditNoteModal = {
   isModalOpen: false,
-  currentNote: { id: '', content: '' },
+  currentNote: { id: '', content: '', hashtags: null },
 };
 
 export const editNoteModalSlice = createSlice({

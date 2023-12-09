@@ -1,29 +1,23 @@
 import { PayloadAction, createSlice } from '@reduxjs/toolkit';
 import { Note } from '../../types/interfaces';
-import { REG_EXP_HASHTAG } from '../../types/constants';
 
-export interface StateNoteListNote extends Note {
-  hashtags: string[] | null;
-}
-
-const initStateNotes: StateNoteListNote[] = [];
+const initStateNotes: Note[] = [];
 
 export const noteSlice = createSlice({
   name: 'notes',
   initialState: initStateNotes,
   reducers: {
     addNote: (state, action: PayloadAction<Note>) => {
-      const hashtags = action.payload.content.match(REG_EXP_HASHTAG);
-      state.push({ ...action.payload, hashtags });
+      state.push(action.payload);
     },
-    setListNote: (state, action: PayloadAction<StateNoteListNote[]>) => {
+    setListNote: (state, action: PayloadAction<Note[]>) => {
       return (state = [...action.payload]);
     },
     editNote: (state, action: PayloadAction<Note>) => {
       const editableNote = state.find((note) => note.id === action.payload.id);
       if (editableNote) {
         editableNote.content = action.payload.content;
-        editableNote.hashtags = action.payload.content.match(REG_EXP_HASHTAG);
+        editableNote.hashtags = action.payload.hashtags;
       }
     },
     deleteNote: (state, action: PayloadAction<{ id: string }>) => {

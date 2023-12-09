@@ -12,9 +12,6 @@ const NoteItem: FC<NoteProps> = ({ note }) => {
   return (
     <List.Item
       actions={[
-        // <a href="/" key="list-edit">
-        //   edit
-        // </a>,
         <EditNoteButton note={note} />,
         <DeleteNoteButton note={note} />,
       ]}

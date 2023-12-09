@@ -4,6 +4,7 @@ import { FieldType } from './types/type';
 import { useAppDispatch } from '../../4_shared/store/hooks/manageStore';
 import { addNote } from '../../4_shared/store/slices/noteSlice';
 import HashTagList from '../../3_features/hashTags/HashTagList';
+import { REG_EXP_HASHTAG } from '../../4_shared/types/constants';
 
 const AddNote = () => {
   const [form] = Form.useForm();
@@ -11,7 +12,8 @@ const AddNote = () => {
   const currentTextNote: string = Form.useWatch('content', form);
 
   const onFinish = ({ content }: FieldType) => {
-    const newNote = { id: uuidv4(), content };
+    const hashtags = content.match(REG_EXP_HASHTAG);
+    const newNote = { id: uuidv4(), content, hashtags };
     dispatch(addNote(newNote));
     form.resetFields();
   };

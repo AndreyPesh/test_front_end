@@ -6,6 +6,7 @@ import {
 import { closeModal } from '../../4_shared/store/slices/editNoteModalSlice';
 import { editNote } from '../../4_shared/store/slices/noteSlice';
 import HighlightTextArea from '../HighlightTextArea/HighlightTextArea';
+import { REG_EXP_HASHTAG } from '../../4_shared/types/constants';
 
 const EditModal = () => {
   const { isModalOpen, currentNote } = useAppSelector(
@@ -16,7 +17,8 @@ const EditModal = () => {
 
   const handleOk = () => {
     if (value && value !== currentNote.content) {
-      dispatch(editNote({ id: currentNote.id, content: value }));
+      const hashtags = value.match(REG_EXP_HASHTAG);
+      dispatch(editNote({ id: currentNote.id, content: value, hashtags }));
     }
     if (!value) {
       return;
