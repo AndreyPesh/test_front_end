@@ -16,8 +16,7 @@ const headerStyle: React.CSSProperties = {
 
 const contentStyle: React.CSSProperties = {
   textAlign: 'center',
-  minHeight: 120,
-  lineHeight: '120px',
+  minHeight: 'calc(100vh - 130px)',
   color: '#fff',
   backgroundColor: '#108ee9',
 };
@@ -25,7 +24,7 @@ const contentStyle: React.CSSProperties = {
 function App() {
   return (
     <Space direction="vertical" style={{ width: '100%' }} size={[0, 48]}>
-      <Layout style={{ height: '100vh' }}>
+      <Layout style={{ height: 'auto' }}>
         <Header style={headerStyle}>
           <AddNote />
         </Header>
