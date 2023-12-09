@@ -6,21 +6,19 @@ import {
   useAppSelector,
 } from '../../4_shared/store/hooks/manageStore';
 import { setValueTextAreaEditNote } from '../../4_shared/store/slices/textAreaSlice';
-
-const REG_EXP_HASHTAG = /#[a-z0-9_]+/g;
+import { REG_EXP_HASHTAG } from '../../4_shared/types/constants';
+import HashTagList from '../hashTags/HashTagList';
 
 const HighlightTextArea = ({ initValue }: { initValue: string }) => {
-  const { value, hashTags } = useAppSelector((state) => state.textArea);
+  const { value } = useAppSelector((state) => state.textArea);
   const dispatch = useAppDispatch();
 
   useEffect(() => {
-    const hashTags = initValue.match(REG_EXP_HASHTAG);
-    dispatch(setValueTextAreaEditNote({ value: initValue, hashTags }));
+    dispatch(setValueTextAreaEditNote({ value: initValue }));
   }, [initValue]);
 
   const onChangeHandler = (value: string) => {
-    const hashTags = value.match(REG_EXP_HASHTAG);
-    dispatch(setValueTextAreaEditNote({ value, hashTags }));
+    dispatch(setValueTextAreaEditNote({ value }));
   };
 
   return (
@@ -38,10 +36,7 @@ const HighlightTextArea = ({ initValue }: { initValue: string }) => {
           onChange={onChangeHandler}
         />
       </div>
-      {hashTags &&
-        hashTags.map((tag, index) => {
-          return <span key={index}> {tag} </span>;
-        })}
+      <HashTagList value={value} />
     </>
   );
 };
