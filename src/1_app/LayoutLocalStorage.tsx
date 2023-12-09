@@ -4,8 +4,10 @@ import {
   useAppDispatch,
   useAppSelector,
 } from '../4_shared/store/hooks/manageStore';
-import { setListNote } from '../4_shared/store/slices/noteSlice';
-import { Note } from '../4_shared/types/interfaces';
+import {
+  StateNoteListNote,
+  setListNote,
+} from '../4_shared/store/slices/noteSlice';
 
 const NAME_KEY_LOCALSTORAGE = 'notes_list_data_storage';
 const EMPTY_LENGTH = 0;
@@ -20,7 +22,7 @@ const LayoutLocalStorage = ({ children }: { children: ReactNode }) => {
     );
 
     if (notesFromLocalStorage && Array.isArray(notesFromLocalStorage)) {
-      dispatch(setListNote(notesFromLocalStorage as Note[]));
+      dispatch(setListNote(notesFromLocalStorage as StateNoteListNote[]));
     }
   }, [dispatch]);
 
