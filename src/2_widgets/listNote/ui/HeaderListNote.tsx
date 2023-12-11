@@ -1,6 +1,6 @@
 import { useState } from 'react';
-import FilterButton from './FilterButton';
-import FilterDrawer from './FilterDrawer';
+import FilterButton from '../../../3_features/FilterDrawer/ui/FilterButton';
+import FilterDrawer from '../../../3_features/FilterDrawer/FilterDrawer';
 
 const HeaderListNote = () => {
   const [open, setOpen] = useState(false);
