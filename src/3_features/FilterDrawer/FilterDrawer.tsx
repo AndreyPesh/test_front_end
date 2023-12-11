@@ -26,7 +26,7 @@ const FilterDrawer: FC<FilterDrawerProps> = ({ open, onClose }) => {
     >
       <SelectedHashtag filterTags={filterTags} />
       <HashtagItemList tagsList={tags} filterTags={filterTags} />
-      <FilterControl />
+      <FilterControl onCloseDrawer={onClose} />
     </Drawer>
   );
 };

@@ -18,6 +18,12 @@
 
 .tag_list {
   padding: 10px;
+  display: flex;
+  flex-wrap: wrap;
+}
+
+.tag_list__header {
+  flex-basis: 100%;
 }
 
 .filter_buttons {

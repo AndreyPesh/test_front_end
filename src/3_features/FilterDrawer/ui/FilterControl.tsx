@@ -4,16 +4,23 @@ import {
   applyFilter,
   resetFilter,
 } from '../../../4_shared/store/slices/filterSlice';
+import { FC } from 'react';
 
-const FilterControl = () => {
+interface FilterControlProps {
+  onCloseDrawer: () => void;
+}
+
+const FilterControl: FC<FilterControlProps> = ({ onCloseDrawer }) => {
   const dispatch = useAppDispatch();
 
   const applyFilterHandler = () => {
     dispatch(applyFilter());
+    onCloseDrawer();
   };
 
   const resetFilterHandler = () => {
     dispatch(resetFilter());
+    onCloseDrawer();
   };
 
   return (

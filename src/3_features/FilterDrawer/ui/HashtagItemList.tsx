@@ -16,7 +16,7 @@ const HashtagItemList = ({
 
   return (
     <div className="tag_list">
-      <h3>All tags:</h3>
+      <h3 className='tag_list__header'>All tags:</h3>
       {tagsList.map((hashtag, index) => {
         if (!filterTags.includes(hashtag)) {
           return (
