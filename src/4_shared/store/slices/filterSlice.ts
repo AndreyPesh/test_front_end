@@ -1,10 +1,14 @@
 import { PayloadAction, createSlice } from '@reduxjs/toolkit';
 
 interface StateFilterNote {
+  isFilterApplied: boolean;
   tags: string[];
 }
 
-const initStateFilterNote: StateFilterNote = { tags: [] };
+const initStateFilterNote: StateFilterNote = {
+  isFilterApplied: false,
+  tags: [],
+};
 
 export const filterNoteSlice = createSlice({
   name: 'filterNote',
@@ -16,11 +20,15 @@ export const filterNoteSlice = createSlice({
     deleteFilterTag: (state, action: PayloadAction<string>) => {
       state.tags = [...state.tags].filter((tag) => tag !== action.payload);
     },
+    applyFilter: (state) => {
+      state.isFilterApplied = true;
+    },
     resetFilter: (state) => {
-      state.tags = [];
+      return state = initStateFilterNote;
     },
   },
 });
 
-export const { addFilterTag, deleteFilterTag } = filterNoteSlice.actions;
+export const { addFilterTag, deleteFilterTag, applyFilter, resetFilter } =
+  filterNoteSlice.actions;
 export default filterNoteSlice.reducer;

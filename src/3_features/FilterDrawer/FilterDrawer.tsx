@@ -5,6 +5,7 @@ import { useAppSelector } from '../../4_shared/store/hooks/manageStore';
 import { getAllHashtag } from './utils/getAllHashtag';
 import HashtagItem from './ui/HashtagItem';
 import SelectedHashtag from './ui/SelectedHashtag';
+import FilterControl from './ui/FilterControl';
 
 interface FilterDrawerProps {
   open: boolean;
@@ -39,6 +40,7 @@ const FilterDrawer: FC<FilterDrawerProps> = ({ open, onClose }) => {
           return null;
         })}
       </div>
+      <FilterControl />
     </Drawer>
   );
 };
