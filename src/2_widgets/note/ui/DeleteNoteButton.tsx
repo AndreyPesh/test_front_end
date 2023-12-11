@@ -1,7 +1,7 @@
 import { FC } from 'react';
-import { Note } from '../../../4_shared/types/interfaces';
 import { Button } from 'antd';
 import { DeleteOutlined } from '@ant-design/icons';
+import { Note } from '../../../4_shared/types/interfaces';
 import { useAppDispatch } from '../../../4_shared/store/hooks/manageStore';
 import { deleteNote } from '../../../4_shared/store/slices/noteSlice';
 

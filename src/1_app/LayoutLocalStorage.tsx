@@ -27,7 +27,10 @@ const LayoutLocalStorage = ({ children }: { children: ReactNode }) => {
   useEffect(() => {
     if (notes.length > EMPTY_LENGTH) {
       reactLocalStorage.setObject(NAME_KEY_LOCALSTORAGE, notes);
+    } else {
+      reactLocalStorage.setObject(NAME_KEY_LOCALSTORAGE, []);
     }
+    
   }, [notes]);
 
   return <>{children}</>;

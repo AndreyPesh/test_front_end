@@ -24,6 +24,7 @@ const AddNote = () => {
 
   return (
     <>
+      <h2 className="title">Add new note</h2>
       <Form
         name="basic"
         layout="inline"

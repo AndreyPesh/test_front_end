@@ -1,10 +1,10 @@
+import { FC } from 'react';
 import { Button } from 'antd';
 import { useAppDispatch } from '../../../4_shared/store/hooks/manageStore';
 import {
   applyFilter,
   resetFilter,
 } from '../../../4_shared/store/slices/filterSlice';
-import { FC } from 'react';
 
 interface FilterControlProps {
   onCloseDrawer: () => void;

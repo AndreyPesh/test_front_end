@@ -1,6 +1,6 @@
-import { PartitionOutlined } from '@ant-design/icons';
-import { Button } from 'antd';
 import { FC } from 'react';
+import { Button } from 'antd';
+import { PartitionOutlined } from '@ant-design/icons';
 import { useAppSelector } from '../../../4_shared/store/hooks/manageStore';
 
 interface FilterButtonProps {

@@ -21,8 +21,8 @@ const HeaderListNote = () => {
           alignItems: 'center',
         }}
       >
-        <h2>List notes</h2>
-        <p>
+        <h2 className='title'>List notes</h2>
+        <p className='subtitle'>
           Filter notes: <FilterButton showDrawerHandler={showFilterDrawer} />
         </p>
       </div>

@@ -1,1 +1,12 @@
 * { margin: 0; }
+
+.title {
+  padding: 5px 0;
+  color: black;
+  font-size: 18px;
+  line-height: 24px;
+}
+
+.subtitle {
+  font-size: 16px;
+}
