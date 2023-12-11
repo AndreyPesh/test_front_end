@@ -13,11 +13,14 @@ export const filterNoteSlice = createSlice({
     addFilterTag: (state, action: PayloadAction<string>) => {
       state.tags.push(action.payload);
     },
+    deleteFilterTag: (state, action: PayloadAction<string>) => {
+      state.tags = [...state.tags].filter((tag) => tag !== action.payload);
+    },
     resetFilter: (state) => {
       state.tags = [];
     },
   },
 });
 
-export const { addFilterTag } = filterNoteSlice.actions;
+export const { addFilterTag, deleteFilterTag } = filterNoteSlice.actions;
 export default filterNoteSlice.reducer;

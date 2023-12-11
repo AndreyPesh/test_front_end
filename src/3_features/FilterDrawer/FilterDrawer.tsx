@@ -23,11 +23,22 @@ const FilterDrawer: FC<FilterDrawerProps> = ({ open, onClose }) => {
       onClose={onClose}
       open={open}
     >
-      {filterTags.length > 0 &&
-        filterTags.map((hashtag) => <SelectedHashtag hashtag={hashtag} />)}
-      {tags.map((tag, index) => (
-        <HashtagItem key={index} hashtag={tag} />
-      ))}
+      <div className="selected_tag_list">
+        <h3>Selected tags:</h3>
+        {filterTags.length > 0 &&
+          filterTags.map((hashtag, index) => (
+            <SelectedHashtag key={index} hashtag={hashtag} />
+          ))}
+      </div>
+      <div className="tag_list">
+        <h3>All tags:</h3>
+        {tags.map((tag, index) => {
+          if (!filterTags.includes(tag)) {
+            return <HashtagItem key={index} hashtag={tag} />;
+          }
+          return null;
+        })}
+      </div>
     </Drawer>
   );
 };

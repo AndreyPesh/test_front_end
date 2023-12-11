@@ -3,3 +3,19 @@
   color: blue;
   cursor: pointer;
 }
+
+.selected_tag {
+  display: inline-flex;
+  padding: 5px;
+}
+
+.selected_tag_list {
+  padding: 10px;
+  border: 1px solid gray;
+  border-radius: 5px;
+  box-shadow: 1px 1px 5px rgba(0.5, 0.5, 0.5, 0.5);
+}
+
+.tag_list {
+  padding: 10px;
+}
