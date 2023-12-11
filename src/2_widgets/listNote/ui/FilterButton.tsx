@@ -1,14 +1,19 @@
-import { FilterOutlined, PartitionOutlined } from "@ant-design/icons";
-import { Button } from "antd";
+import { PartitionOutlined } from '@ant-design/icons';
+import { Button } from 'antd';
+import { FC } from 'react';
 
-const FilterButton = () => {
+interface FilterButtonProps {
+  showDrawerHandler: () => void;
+}
+
+const FilterButton: FC<FilterButtonProps> = ({ showDrawerHandler }) => {
   return (
     <Button
       danger
       icon={<PartitionOutlined style={{ color: 'orange' }} />}
       size={'small'}
       style={{ borderColor: 'orange' }}
-      onClick={() => {}}
+      onClick={showDrawerHandler}
     />
   );
 };
