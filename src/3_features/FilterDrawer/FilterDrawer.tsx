@@ -4,6 +4,7 @@ import { FC } from 'react';
 import { useAppSelector } from '../../4_shared/store/hooks/manageStore';
 import { getAllHashtag } from './utils/getAllHashtag';
 import HashtagItem from './ui/HashtagItem';
+import SelectedHashtag from './ui/SelectedHashtag';
 
 interface FilterDrawerProps {
   open: boolean;
@@ -11,6 +12,7 @@ interface FilterDrawerProps {
 }
 
 const FilterDrawer: FC<FilterDrawerProps> = ({ open, onClose }) => {
+  const filterTags = useAppSelector((state) => state.filter.tags);
   const notes = useAppSelector((state) => state.notes);
   const tags = getAllHashtag(notes);
 
@@ -21,6 +23,8 @@ const FilterDrawer: FC<FilterDrawerProps> = ({ open, onClose }) => {
       onClose={onClose}
       open={open}
     >
+      {filterTags.length > 0 &&
+        filterTags.map((hashtag) => <SelectedHashtag hashtag={hashtag} />)}
       {tags.map((tag, index) => (
         <HashtagItem key={index} hashtag={tag} />
       ))}
